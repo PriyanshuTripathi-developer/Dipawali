@@ -1,0 +1,40 @@
+{% include "header.html" %}
+{% block content %}
+    <main class="main-content">
+        <div class="container">
+            <div class="auth-container">
+                <h2 class="auth-title">Login to LightUp</h2>
+                <form method="POST" id="loginForm">
+                {% csrf_token %}
+                <div class="form-group">
+                        <label class="form-label" for="loginEmail">Email</label>
+                        <input type="text" id="loginEmail" class="form-input" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                        <label class="form-label" for="loginPassword">Password</label>
+                        <input type="password"  name="password"  class="form-input"placeholder="Password"  required>
+
+                    </div>
+
+             <button class="auth-btn" type="submit">Login</button>
+                  </br>
+            {% if user.is_authenticated %}
+            <a class="register" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="register" href="{% url 'register' %}">Register</a>
+            {% endif %}
+               </form>
+            </div>
+        </div>
+    </main>
+    {% comment %} <nav>
+    {% if user.is_authenticated %}
+      <a href="{% url 'add_wish' %}">Add Wish</a>
+      <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'login' %}">Login</a>
+      <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+  </nav> {% endcomment %}
+    {% endblock %}
+{% include "footer.html" %}

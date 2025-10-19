@@ -1,0 +1,52 @@
+{% include "header.html" %}
+{% if user.is_authenticated %}
+    <main class="main-content">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">{{ user.username|slice:":1" }}</div>
+                <div>
+                    <h2>{{ user.username }}</h2>
+                    <p>Delhi, India</p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value">24</div>
+                            <div class="stat-label">Diyas Lit</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">{{ wish_count }}</div>
+                            <div class="stat-label">wishes</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Rank</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Your Diwali Wishes</h3>
+            <div class="wishes-container">
+            {% for wish in wishes %}
+                <div class="wish-card">
+                    <div class="wish-user">
+                        <div class="user-avatar">{{ wish.name|slice:":1" }}</div>
+                        <div>
+                            <div class="user-name">{{ wish.name }}</div>
+                            <div class="wish-time">On {{ wish.created_at|date:"M d, Y" }}</div>
+                        </div>
+                    </div>
+                    <div class="wish-message">{{ wish.wish_text }}</div>
+                    {% if wish.image %}
+                    <img src="{{ wish.image.url }}" alt="Diwali" class="wish-image">
+                    {% endif %}
+                </div>
+                {% empty %}
+                    <p>No wishes yet. Be the first to add one!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main> 
+{% else %}
+  <p>No wishes yet. Be the first to add one!</p>
+{% endif %}
+{% include "footer.html" %}

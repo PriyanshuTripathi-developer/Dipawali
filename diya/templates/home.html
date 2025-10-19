@@ -1,0 +1,32 @@
+{% include "header.html" %}
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Home Page -->
+            <section class="hero">
+                <h1 class="hero-title">LightUp – Celebrate Diwali Together</h1>
+                <p class="hero-subtitle">Join the virtual celebration and light up the world with positivity</p>
+                
+                <div class="diyas-container">
+                    <div class="diya" onclick="lightDiya(this)">
+                        <div class="diya-base"></div>
+                        <div class="diya-flame"></div>
+                    </div>
+                    <div class="diya" onclick="lightDiya(this)">
+                        <div class="diya-base"></div>
+                        <div class="diya-flame"></div>
+                    </div>
+                    <div class="diya" onclick="lightDiya(this)">
+                        <div class="diya-base"></div>
+                        <div class="diya-flame"></div>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <button class="light-btn" onclick="lightAllDiyas()">
+                    <i class="fas fa-fire"></i> Light All Diyas
+                </button>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+{% include "footer.html" %}

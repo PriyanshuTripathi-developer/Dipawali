@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightUp - Virtual Diwali Celebration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Floating Diyas Background -->
+    <div class="floating-diyas" id="floatingDiyas"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-fire"></i>
+                LightUp
+            </div>
+            
+            <div class="nav-links">
+                <a href="{% url 'home' %}" class="nav-link active" data-page="home">Home</a>
+                <a href= "{% url 'wishes' %}" class="nav-link" data-page="feed">Wishes</a>
+                {% comment %} <a href="{% url 'leaderboard' %}" class="nav-link" data-page="leaderboard">Leaderboard</a> {% endcomment %}
+                <a href="{% url 'profile' %}" class="nav-link" data-page="profile">Profile</a>
+                <a href="{% url 'login' %}" class="nav-link" data-page="login">Login</a>
+            </div>
+            
+            <div class="light-counter">
+                <i class="fas fa-fire"></i>
+                <span id="totalLights">1,247</span> Diyas Lit
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="mobile-menu">
+            <a href="{% url 'home' %}" class="nav-link active" data-page="home">Home</a>
+            <a href="{% url 'wishes' %}" class="nav-link" data-page="feed">Wishes</a>
+            <a href="{% url 'profile'%}" class="nav-link" data-page="profile">Profile</a>
+            <a href="{% url 'login' %}" class="nav-link" data-page="login">Login</a>
+        </div>
+    </nav>
+    <body data-username="{{ request.user.username|default:'guest' }}">
+
+
+
+
+    

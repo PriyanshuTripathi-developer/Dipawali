@@ -1,0 +1,31 @@
+{% include "header.html" %}
+    <main class="main-content">
+        <div class="container">
+            <h2>Diwali Wishes</h2>
+            <p>See what others are wishing this Diwali</p>
+            <br>
+            {% if user.is_authenticated %}
+            <a class="auth-btn" href="{% url 'add_wish' %}" >Add Wish</a>
+            {% endif %}
+            <div class="wishes-container">
+                {% for wish in wishes %}
+                <div class="wish-card">
+                    <div class="wish-user">
+                        <div class="user-avatar">{{ wish.name|slice:":1" }}</div>
+                        <div>
+                            <div class="user-name">{{ wish.name }}</div>
+                            <div class="wish-time">By {{ wish.user.username }} on {{ wish.created_at|date:"M d, Y" }}</div>
+                        </div>
+                    </div>
+                    <div class="wish-message">{{ wish.wish_text }}</div>
+                    {% if wish.image %}
+                    <img src="{{ wish.image.url }}" alt="Diwali" class="wish-image">
+                    {% endif %}
+                </div>
+                {% empty %}
+                    <p>No wishes yet. Be the first to add one!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+{% include "footer.html" %}
