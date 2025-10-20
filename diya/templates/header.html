@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <!-- Floating Diyas Background -->
     <div class="floating-diyas" id="floatingDiyas"></div>
-    
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-container">
             <div class="logo">
@@ -43,6 +40,7 @@
             <a href="{% url 'login' %}" class="nav-link" data-page="login">Login</a>
         </div>
     </nav>
+    <marquee behavior="" direction="left" >Please Login for Lightup and Post your Wishes</marquee>
     <body data-username="{{ request.user.username|default:'guest' }}">
 
 

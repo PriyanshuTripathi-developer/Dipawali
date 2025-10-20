@@ -74,13 +74,11 @@ def add_wish(request):
 @login_required
 def light_diyas(request):
     profile, created = UserProfile.objects.get_or_create(user=request.user)
-    stats, _ = GlobalStats.objects.get_or_create(id=1)  # Ensure one global record exists
-
+    stats, _ = GlobalStats.objects.get_or_create(id=1) 
     if not profile.has_lit_diyas:
         profile.has_lit_diyas = True
         profile.save()
 
-        # Increment global diya count
         stats.total_diyas += 1
         stats.save()
 
