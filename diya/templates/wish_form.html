@@ -106,11 +106,13 @@ button[type="submit"]:hover {
     }
 }
 </style>
+<div class="containe">
 <h2>Add Your Wish</h2>
 <form method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Submit Wish</button>
 </form>
+</div>
 {% endblock %}
 {% include "footer.html" %}
